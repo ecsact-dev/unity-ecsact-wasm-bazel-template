@@ -1,0 +1,48 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@rules_ecsact//ecsact:defs.bzl", "ecsact_codegen")
+load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
+load("//bazel:copts.bzl", "copts")
+
+package(default_visibility = ["//visibility:public"])
+
+ecsact_srcs = [
+    "Assets/example.ecsact",
+]
+
+ecsact_codegen(
+    name = "ecsact_cc_system_impl_srcs",
+    srcs = ecsact_srcs,
+    plugins = [
+        "@ecsact//codegen_plugins:cpp_systems_source",
+    ],
+)
+
+ecsact_codegen(
+    name = "ecsact_cc_hdrs",
+    srcs = ecsact_srcs,
+    plugins = [
+        "@ecsact//codegen_plugins:cpp_header",
+        "@ecsact//codegen_plugins:cpp_systems_header",
+        "@ecsact//codegen_plugins:systems_header",
+        "@ecsact//codegen_plugins:cpp_meta_header",
+    ],
+)
+
+cc_library(
+    name = "ecsact_cc",
+    hdrs = [":ecsact_cc_hdrs"],
+    copts = copts,
+    strip_include_prefix = "ecsact_cc_hdrs",
+    deps = [
+        "@ecsact_lang_cpp//:execution_context",
+    ],
+)
+
+refresh_compile_commands(
+    name = "refresh_compile_commands",
+    targets = {
+        ":ecsact_cc_system_impl_srcs": "",
+        ":ecsact_cc": "",
+        "//SystemImpls:lib": "",
+    },
+)

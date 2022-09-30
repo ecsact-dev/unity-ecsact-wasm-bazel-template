@@ -1,0 +1,61 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+load("//bazel:copts.bzl", "copts")
+
+package(default_visibility = ["//visibility:public"])
+
+# keep sorted
+_SYSTEMS = [
+    "example__Attack",
+    "example__AttackDamage",
+    "example__Gravity",
+    "example__Shoot",
+]
+
+lib_srcs = ["//:ecsact_cc_system_impl_srcs"] + glob([
+    "*.cc",
+    "*.hh",
+])
+
+lib_deps = [
+    "//:ecsact_cc",
+]
+
+cc_library(
+    name = "lib",
+    srcs = lib_srcs,
+    copts = copts,
+    deps = lib_deps,
+)
+
+cc_binary(
+    name = "lib_for_wasm",
+    srcs = lib_srcs,
+    copts = copts,
+    features = [
+        "wasm_standalone",
+        "wasm_no_entry",
+        "-wasm_warnings_as_errors",
+        "-wasm_error_on_undefined_symbols",
+        "-exceptions",
+    ],
+    linkshared = True,
+    tags = ["manual"],
+    deps = lib_deps,
+)
+
+wasm_cc_binary(
+    name = "wasm",
+    backend = "llvm",
+    cc_target = ":lib_for_wasm",
+    exported_functions = [
+        "_%s" % sys_name
+        for sys_name in _SYSTEMS
+    ],
+    outputs = ["SystemImpls.wasm"],
+)
+
+filegroup(
+    name = "SystemImpls",
+    srcs = ["SystemImpls.wasm"],
+)

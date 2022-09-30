@@ -1,0 +1,12 @@
+# Unity Folders
+Assets
+obj
+Logs
+Library
+Temp
+Packages
+ProjectSettings
+UserSettings
+
+# Generated
+compile_commands.json

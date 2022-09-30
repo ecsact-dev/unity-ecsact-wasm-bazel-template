@@ -1,0 +1,43 @@
+main package example;
+
+component Player;
+
+component Health {
+	u8 value;
+}
+
+component Attacking {
+	entity target;
+}
+
+component Position {
+	f32 x;
+	f32 y;
+}
+
+component Bullet;
+
+action Attack {
+	entity target;
+	include Player;
+	adds Attacking;
+}
+
+action Shoot {
+	include Player;
+	readwrite Position;
+	generates {
+		required Position;
+	}
+}
+
+system AttackDamage {
+	readonly Attacking with target {
+		readwrite Health;
+	}
+}
+
+system Gravity {
+	readwrite Position;
+}
+

@@ -1,0 +1,19 @@
+{
+	"[starlark]": {
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true,
+	},
+	"[json]": {
+		"editor.formatOnSave": true
+	},
+	"editor.insertSpaces": false,
+	"files.insertFinalNewline": true,
+	"files.exclude": {
+		"**/.DS_Store": true,
+		"*.csproj": true
+	},
+	"C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+	"C_Cpp.default.includePath": [
+		"bazel-bin/ecsact_cc_hdrs"
+	]
+}
