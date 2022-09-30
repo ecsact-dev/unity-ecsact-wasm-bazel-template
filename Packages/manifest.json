@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.seaube.unity-wasm": "file:C:/Users/zekew/projects/seaube/unity-wasm",
-    "com.seaube.unity.bazel": "file:C:/Users/zekew/projects/seaube/unity-bazel",
+    "com.seaube.unity-wasm": "git@github.com:seaube/unity-wasm.git",
+    "com.seaube.unity.bazel": "git@github.com:seaube/unity-bazel.git",
     "com.unity.collab-proxy": "1.17.2",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.rider": "3.0.15",
