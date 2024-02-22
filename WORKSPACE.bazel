@@ -48,9 +48,9 @@ register_emscripten_toolchains()
 
 http_archive(
     name = "hedron_compile_commands",
-    sha256 = "d699c5e3a82b811d7051e833b1808358256a9c52285a43e6a3abb76c809ab03f",
-    strip_prefix = "bazel-compile-commands-extractor-33658bab23a4858b513d767480b43d3d8fb6a3d1",
-    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/33658bab23a4858b513d767480b43d3d8fb6a3d1.tar.gz",
+    sha256 = "b6cf87cf380d08a160d1f726c2cb22a2d6ea52a147c4700d5e5732aaa6675d11",
+    strip_prefix = "bazel-compile-commands-extractor-204aa593e002cbd177d30f11f54cff3559110bb9",
+    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/204aa593e002cbd177d30f11f54cff3559110bb9.tar.gz",
 )
 
 load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
