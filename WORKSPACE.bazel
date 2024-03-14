@@ -16,9 +16,9 @@ http_archive(
 
 http_archive(
     name = "rules_ecsact",
-    sha256 = "54932ce1329ea75e9e24d3bae81c9f991f393b43a63fea9ec17f70c27e179d54",
-    strip_prefix = "rules_ecsact-0.1.7",
-    url = "https://github.com/ecsact-dev/rules_ecsact/archive/refs/tags/0.1.7.tar.gz",
+    sha256 = "c74bd1e9c818fc2a9eead792e0dc70bc454eb443c50550f6fce02c170f034da3",
+    strip_prefix = "rules_ecsact-0.4.9",
+    url = "https://github.com/ecsact-dev/rules_ecsact/archive/refs/tags/0.4.9.tar.gz",
 )
 
 load("@rules_ecsact//ecsact:repositories.bzl", "ecsact_register_toolchains", "rules_ecsact_dependencies")
