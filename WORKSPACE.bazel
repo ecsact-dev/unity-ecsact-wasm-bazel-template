@@ -29,9 +29,9 @@ ecsact_register_toolchains()
 
 http_archive(
     name = "emsdk",
-    sha256 = "28bba9c179854b0f7e548a7adf87173e8cbe098ddfdbe25fa9f5a5875faa0a1a",
-    strip_prefix = "emsdk-589dd6a639ff428852cf998607cf226c5ce12efb/bazel",
-    url = "https://github.com/zaucy/emsdk/archive/589dd6a639ff428852cf998607cf226c5ce12efb.zip",
+    sha256 = "99a879be7f40d269bf61dd916f6db01d5ec304264188e58875191511381e864f",
+    strip_prefix = "emsdk-890e0c63955caeb9a2edc3cd21b3c2f5a2ee1a07/bazel",
+    url = "https://github.com/zaucy/emsdk/archive/890e0c63955caeb9a2edc3cd21b3c2f5a2ee1a07.zip",
 )
 
 load("@emsdk//:deps.bzl", emsdk_deps = "deps")
